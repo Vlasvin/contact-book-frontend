@@ -1,46 +1,21 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const ContForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  margin: 0 auto;
-  gap: 20px;
-  border-radius: 6px;
+export const Div = styled.div`
+  border-radius: 8px;
   border: 1px solid #121214;
   box-shadow: 0 0 10px rgba(235, 227, 227, 0.1);
-  padding: 20px 40px;
-  background-color: white;
-
-  @media (max-width: 768px) {
-    max-width: 300px;
-  }
-  @media (max-width: 428px) {
-    max-width: 200px;
-  }
-`;
-
-export const ContLabel = styled.label`
+  padding: 20px;
+  background-color: #e0d3d3f8;
+  width: 900px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 10px;
-  margin: 0 auto;
+  margin: 60px 20px;
 `;
 
-export const ContInput = styled.input`
-  border-radius: 6px;
-  width: 300px;
-  height: 20px;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    max-width: 200px;
-  }
-  @media (max-width: 428px) {
-    max-width: 100px;
-  }
-`;
-export const AddButton = styled.button`
+export const StyledNavLink = styled(NavLink)`
   border-radius: 6px;
   align-items: center;
   border: 0;

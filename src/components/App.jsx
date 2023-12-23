@@ -1,16 +1,22 @@
-import { ContactForm } from "components/ContactForm/ContactForm";
-import { ContactList } from "components/ContactList/ContactList";
-import { Filter } from "components/Filter/Filter";
-import { Div } from "components/ContactForm/ContactForm.styled";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RegistrationPage from "pages/RegistrationPage/RegistrationPage";
+import LoginPage from "pages/LoginPage /LoginPage";
+import ContactsPage from "pages/ContactsPage/ContactsPage";
+import Layout from "./Layout/Layout";
 
-export const App = () => {
+const App = () => {
   return (
-    <Div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter></Filter>
-      <ContactList></ContactList>
-    </Div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/contacts" element={<ContactsPage />}></Route>
+        </Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/register" element={<RegistrationPage />}></Route>
+      </Routes>
+    </Router>
   );
 };
+
+export default App;

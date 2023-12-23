@@ -1,16 +1,32 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://657c25fe394ca9e4af15911f.mockapi.io/contacts";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+
+const setToken = (token) => {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
 
 export async function fetchContacts() {
-  const { data } = await axios.get(`/`);
+  const { data } = await axios.get(`/contacts`);
   return data;
 }
 export async function addContact(item) {
-  const { data } = await axios.post(`/`, item);
+  const { data } = await axios.post(`/contacts`, item);
   return data;
 }
-export async function deleteContact(id) {
-  const { data } = await axios.delete(`/${id}`);
+export async function deleteContact(contactId) {
+  const { data } = await axios.delete(`/contacts/${contactId}`);
+  return data;
+}
+export async function registration(body) {
+  const { data } = await axios.post(`/users/signup`, body);
+  setToken(data.token);
+  return data;
+}
+export async function login(body) {
+  const { data } = await axios.post(`/users/login`, body);
+  setToken(data.token);
+  localStorage.setItem("token", data.token);
+
   return data;
 }

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "Services/api";
+// import { useSelector } from "react-redux";
 
 export const getAllContactsAction = createAsyncThunk(
   "contacts/fetchAll",
@@ -13,6 +14,7 @@ export const getAllContactsAction = createAsyncThunk(
 export const addContactAction = createAsyncThunk(
   "contacts/addContact",
   async (newContact, { rejectWithValue }) => {
+    // const { user } = useSelector((state) => state.auth);
     try {
       const data = await addContact(newContact);
       return data;
