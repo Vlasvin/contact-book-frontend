@@ -2,8 +2,11 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
-const setToken = (token) => {
+export const setToken = (token) => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
+export const removeToken = () => {
+  delete axios.defaults.headers.common["Authorization"];
 };
 
 export async function fetchContacts() {
@@ -27,6 +30,13 @@ export async function login(body) {
   const { data } = await axios.post(`/users/login`, body);
   setToken(data.token);
   localStorage.setItem("token", data.token);
-
+  return data;
+}
+export async function currentUser() {
+  const { data } = await axios.get(`/users/current`);
+  return data;
+}
+export async function logout() {
+  const { data } = await axios.post(`/users/logout`);
   return data;
 }

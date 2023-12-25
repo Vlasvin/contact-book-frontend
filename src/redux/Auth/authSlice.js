@@ -1,42 +1,63 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk, registerThunk } from "./thunks";
+import {
+  currentUserThunk,
+  loginThunk,
+  logoutThunk,
+  registerThunk,
+} from "./thunks";
 
-const authSlice = createSlice({
+const handlePending = (state) => {
+  state.isLoading = true;
+  state.error = null;
+};
+
+const handleFulfilled = (state, action) => {
+  state.token = action.payload.token;
+  state.user = action.payload.user;
+  state.isLoading = false;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload.message;
+};
+
+export const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: "",
     user: null,
     isLoading: false,
     error: null,
+    isRefreshing: false,
   },
-  reducers: {},
+
   extraReducers: (builder) => {
     builder
-      .addCase(registerThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        state.token = payload.token;
-        state.user = payload.user;
+      .addCase(registerThunk.pending, handlePending)
+      .addCase(registerThunk.fulfilled, handleFulfilled)
+      .addCase(registerThunk.rejected, handleRejected)
+      .addCase(loginThunk.pending, handlePending)
+      .addCase(loginThunk.fulfilled, handleFulfilled)
+      .addCase(loginThunk.rejected, handleRejected)
+      .addCase(currentUserThunk.pending, handlePending)
+      .addCase(currentUserThunk.fulfilled, (state, action) => {
+        state.user = action.payload;
         state.isLoading = false;
+        state.isRefreshing = false;
       })
-      .addCase(registerThunk.rejected, (state, { error }) => {
+      .addCase(currentUserThunk.rejected, handleRejected)
+      .addCase(logoutThunk.pending, handlePending)
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.token = "";
+        state.user = null;
         state.isLoading = false;
-        state.error = error.message;
+        localStorage.clear();
       })
-      .addCase(loginThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.token = payload.token;
-        state.user = payload.user;
-        state.isLoading = false;
-      })
-      .addCase(loginThunk.rejected, (state, { error }) => {
-        state.isLoading = false;
-        state.error = error.message;
+      .addCase(logoutThunk.rejected, (state, action) => {
+        handleRejected(state, action);
+        state.token = "";
+        localStorage.clear();
       });
   },
 });

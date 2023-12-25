@@ -23,7 +23,7 @@ const FormLogin = ({ login }) => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <StyledLink type="button" to="/">
-          go home
+          Go home
         </StyledLink>
         <FormGroup>
           <Label>Email address</Label>

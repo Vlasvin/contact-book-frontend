@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
-// import { contactsSlice } from "../../redux/Contacts/contactsSlice";
 import {
   ContForm,
   ContLabel,
@@ -9,6 +8,11 @@ import {
   AddButton,
 } from "./ContactForm.styled";
 import { addContactAction } from "../../redux/Contacts/contactsOperations";
+
+const formatPhoneNumber = (phoneNumber) => {
+  if (phoneNumber.length < 10) return null;
+  return phoneNumber.replace(/(\d{3})(\d{4})/, "$1-$2");
+};
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -19,14 +23,24 @@ export const ContactForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.currentTarget;
     const trimmedValue = value.trim();
-    if (
-      (name === "name" && /^[a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ' ]*$/.test(trimmedValue)) ||
-      (name === "number" && /^[0-9-]*$/.test(trimmedValue))
-    ) {
-      if (name === "name") {
-        setName(trimmedValue);
-      } else if (name === "number") {
-        setNumber(trimmedValue);
+
+    if (name === "name") {
+      const cleanedName = trimmedValue.replace(
+        /[^a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ' ]/g,
+        ""
+      );
+
+      setName(cleanedName);
+    } else if (name === "number") {
+      const cleanedNumber = trimmedValue.replace(/\D/g, "");
+      const limitedNumber = cleanedNumber.slice(0, 10);
+      const formattedNumber = limitedNumber.replace(
+        /(\d{3})(\d{3})(\d{2})(\d{2})/,
+        "($1)$2-$3-$4"
+      );
+
+      if (limitedNumber.length <= 10) {
+        setNumber(formattedNumber);
       }
     }
   };
@@ -34,10 +48,17 @@ export const ContactForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const formattedNumber = formatPhoneNumber(number);
+
+    if (!formattedNumber) {
+      alert("The phone number is too short.");
+      return;
+    }
+
     const newContact = {
       id: nanoid(),
       name,
-      number,
+      number: formattedNumber,
     };
 
     const existingContact = contacts.find(

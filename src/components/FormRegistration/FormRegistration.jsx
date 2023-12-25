@@ -24,7 +24,7 @@ const FormRegistration = ({ register }) => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <StyledLink type="button" to="/">
-          go home
+          Go home
         </StyledLink>
         <FormGroup>
           <Label htmlFor="exampleInputEmail1" className="form-label">

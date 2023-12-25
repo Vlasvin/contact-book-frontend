@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Div = styled.div`
@@ -13,9 +12,19 @@ export const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 60px 20px;
+
+  @media (max-width: 428px) {
+    padding: 20px 0;
+  }
 `;
 
-export const StyledNavLink = styled(NavLink)`
+export const Title = styled.h1`
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
+`;
+
+export const BtnLogout = styled.button`
   border-radius: 6px;
   align-items: center;
   border: 0;
@@ -44,4 +53,42 @@ export const StyledNavLink = styled(NavLink)`
     outline: 0;
     background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   }
+`;
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  @media (max-width: 428px) {
+    flex-direction: column;
+  }
+`;
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 428px) {
+    flex-direction: row;
+  }
+`;
+export const UserMail = styled.p`
+  margin-right: 10px;
+  font-size: 18px;
+
+  @media (max-width: 768px) {
+    margin-top: 5px;
+  }
+
+  @media (max-width: 428px) {
+    margin-bottom: 5px;
+  }
+
+  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  -webkit-background-clip: text;
+  color: transparent;
 `;

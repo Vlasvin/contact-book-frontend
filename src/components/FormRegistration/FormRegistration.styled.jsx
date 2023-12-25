@@ -34,19 +34,6 @@ export const Input = styled.input`
   border-radius: 8px;
 `;
 
-export const StyledLink = styled(Link)`
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 export const Button = styled.button`
   width: 100%;
   padding: 10px;
@@ -63,4 +50,15 @@ export const Button = styled.button`
   }
 `;
 
-// Ваш решта коду...
+export const StyledLink = styled(Link)`
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 5px;
+  y &:hover {
+    text-decoration: underline;
+  }
+`;
