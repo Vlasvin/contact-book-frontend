@@ -36,7 +36,7 @@ export const currentUserThunk = createAsyncThunk(
   "auth/current",
   async (_, { getState, rejectWithValue }) => {
     const token = getState().auth.token;
-    if (token === null) return;
+    if (token === "") return rejectWithValue("Unable to fetch user");
 
     try {
       setToken(token);

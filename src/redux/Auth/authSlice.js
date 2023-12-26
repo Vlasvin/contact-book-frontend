@@ -14,12 +14,13 @@ const handlePending = (state) => {
 const handleFulfilled = (state, action) => {
   state.token = action.payload.token;
   state.user = action.payload.user;
-  state.isLoading = false;
+  state.isLoggedIn = true;
 };
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload.message;
+  state.isRefreshing = false;
 };
 
 export const authSlice = createSlice({
@@ -30,6 +31,7 @@ export const authSlice = createSlice({
     isLoading: false,
     error: null,
     isRefreshing: false,
+    isLoggedIn: false,
   },
 
   extraReducers: (builder) => {
@@ -45,6 +47,7 @@ export const authSlice = createSlice({
         state.user = action.payload;
         state.isLoading = false;
         state.isRefreshing = false;
+        state.isLoggedIn = true;
       })
       .addCase(currentUserThunk.rejected, handleRejected)
       .addCase(logoutThunk.pending, handlePending)
@@ -52,6 +55,7 @@ export const authSlice = createSlice({
         state.token = "";
         state.user = null;
         state.isLoading = false;
+        state.isLoggedIn = false;
         localStorage.clear();
       })
       .addCase(logoutThunk.rejected, (state, action) => {
@@ -61,5 +65,4 @@ export const authSlice = createSlice({
       });
   },
 });
-
 export const authReducer = authSlice.reducer;

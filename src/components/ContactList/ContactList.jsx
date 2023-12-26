@@ -11,15 +11,19 @@ import {
   selectIsLoading,
   selectError,
 } from "../../redux/Selectors/selectors";
+import { useAuth } from "hooks/useAuth";
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    dispatch(getAllContactsAction());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(getAllContactsAction());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const handleDeleteContact = (id) => {
     dispatch(deleteContactAction(id));
