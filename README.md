@@ -22,6 +22,25 @@ The "Contacts Book" project is built using React framework with Redux for state 
 **Login:** Page for existing users to log in.
 **Contacts:** Page displaying the user's contact list, where they can add, edit, and delete contacts. It also includes a search and filter functionality to search and filter contacts by name.
 
+Dependencies
+Here are the project's dependencies:
+
+- @mui/material: "^5.15.1"
+- @mui/styled-engine-sc: "^6.0.0-alpha.9"
+- @reduxjs/toolkit: "^2.0.1"
+- @testing-library/jest-dom: "^5.16.3"
+- @testing-library/react: "^12.1.4"
+- @testing-library/user-event: "^13.5.0"
+- axios: "^1.6.2"
+- react: "^18.1.0"
+- react-dom: "^18.1.0"
+- react-redux: "^9.0.4"
+- react-router-dom: "^6.21.1"
+- react-scripts: "5.0.1"
+- redux-persist: "^6.0.0"
+- styled-components: "^6.1.2"
+- web-vitals: "^2.1.3"
+
 ### Contribution and Feedback
 
-If you would like to contribute to the project or provide feedback, please feel free to reach out via my [https://linkedin.com/in/oleksii-vlasenko].
+If you would like to contribute to the project or provide feedback, please feel free to reach out via my [Oleksii Vlasenko](https://linkedin.com/in/oleksii-vlasenko).
