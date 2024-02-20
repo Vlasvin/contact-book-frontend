@@ -6,17 +6,13 @@ The "Contacts Book" project is created for storing and conveniently searching us
 
 To install project dependencies, use the following command:
 
-\
 npm i
-\
 
 ### Usage
 
 To start the project, use the following command:
 
-\
 npm start
-\
 
 ### Description
 
