@@ -1,8 +1,8 @@
 {
-  "name": "vlasvin.github.io",
+  "name": "contacts-book-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vlasvin.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://vlasvin.github.io/contacts-book-frontend/",
   "dependencies": {
     "@mui/material": "^5.15.1",
     "@mui/styled-engine-sc": "^6.0.0-alpha.9",
