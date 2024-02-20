@@ -14,11 +14,6 @@ const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-  // useEffect(() => {
-  //   if (!isRefreshing) {
-  //     dispatch(currentUserThunk());
-  //   }
-  // }, [dispatch, isRefreshing]);
   useEffect(() => {
     dispatch(currentUserThunk());
   }, [dispatch]);
