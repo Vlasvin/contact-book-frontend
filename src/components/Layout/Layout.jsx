@@ -1,6 +1,9 @@
 import { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { currentUserThunk, logoutThunk } from "../../redux/Auth/thunks";
+import { removeToken } from "Services/api";
+
 import {
   Div,
   Title,
@@ -9,8 +12,6 @@ import {
   Container,
   BtnLogout,
 } from "./Layout.styled";
-import { removeToken } from "Services/api";
-import { currentUserThunk, logoutThunk } from "../../redux/Auth/thunks";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();

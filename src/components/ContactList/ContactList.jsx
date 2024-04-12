@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { ContList } from "components/ContactList/ContactList.styled";
-import { Contact } from "components/Contact/Contact";
+import { useAuth } from "hooks/useAuth";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   deleteContactAction,
   getAllContactsAction,
@@ -11,7 +11,8 @@ import {
   selectIsLoading,
   selectError,
 } from "../../redux/Selectors/selectors";
-import { useAuth } from "hooks/useAuth";
+import { ContList } from "components/ContactList/ContactList.styled";
+import { Contact } from "components/Contact/Contact";
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);

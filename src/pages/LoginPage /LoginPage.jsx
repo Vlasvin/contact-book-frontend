@@ -1,8 +1,9 @@
-import FormLogin from "components/FormLogin/FormLogin";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import { loginThunk } from "../../redux/Auth/thunks";
+import FormLogin from "components/FormLogin/FormLogin";
 
 const LoginPage = () => {
   const dispatch = useDispatch();

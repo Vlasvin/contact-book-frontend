@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+
+import { currentUserThunk } from "../redux/Auth/thunks";
+import { RestrictedRoute } from "./RestrictedRoute";
+import { PrivateRoute } from "./PrivateRoute";
 import RegistrationPage from "pages/RegistrationPage/RegistrationPage";
 import LoginPage from "pages/LoginPage /LoginPage";
 import ContactsPage from "pages/ContactsPage/ContactsPage";
 import Layout from "./Layout/Layout";
-import { useDispatch } from "react-redux";
-import { useAuth } from "hooks/useAuth";
-import { currentUserThunk } from "../redux/Auth/thunks";
-import { RestrictedRoute } from "./RestrictedRoute";
-import { PrivateRoute } from "./PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();

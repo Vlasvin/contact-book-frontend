@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addContactAction } from "../../redux/Contacts/contactsOperations";
+
 import { nanoid } from "nanoid";
+
 import {
   ContForm,
   ContLabel,
   ContInput,
   AddButton,
 } from "./ContactForm.styled";
-import { addContactAction } from "../../redux/Contacts/contactsOperations";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (phoneNumber.length < 10) return null;
