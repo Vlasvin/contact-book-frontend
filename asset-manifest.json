@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/contacts-book-frontend/static/css/main.028441a7.css",
-    "main.js": "/contacts-book-frontend/static/js/main.c1266a02.js",
+    "main.js": "/contacts-book-frontend/static/js/main.7d348ee8.js",
     "static/media/pexels-fwstudio-172289-min.jpg": "/contacts-book-frontend/static/media/pexels-fwstudio-172289-min.3094999d70208d461dce.jpg",
     "index.html": "/contacts-book-frontend/index.html",
     "main.028441a7.css.map": "/contacts-book-frontend/static/css/main.028441a7.css.map",
-    "main.c1266a02.js.map": "/contacts-book-frontend/static/js/main.c1266a02.js.map"
+    "main.7d348ee8.js.map": "/contacts-book-frontend/static/js/main.7d348ee8.js.map"
   },
   "entrypoints": [
     "static/css/main.028441a7.css",
-    "static/js/main.c1266a02.js"
+    "static/js/main.7d348ee8.js"
   ]
 }
