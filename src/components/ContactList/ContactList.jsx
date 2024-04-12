@@ -11,8 +11,9 @@ import {
   selectIsLoading,
   selectError,
 } from "../../redux/Selectors/selectors";
-import { ContList } from "components/ContactList/ContactList.styled";
 import { Contact } from "components/Contact/Contact";
+
+import { ContList } from "components/ContactList/ContactList.styled";
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);

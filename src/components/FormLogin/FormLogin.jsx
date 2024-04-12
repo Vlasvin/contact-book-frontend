@@ -6,7 +6,8 @@ import {
   Input,
   Label,
   StyledLink,
-} from "components/FormRegistration/FormRegistration.styled";
+  LinksContainer,
+} from "components/FormRegistration/styled";
 
 const FormLogin = ({ login }) => {
   const handleSubmit = (e) => {
@@ -22,20 +23,30 @@ const FormLogin = ({ login }) => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <StyledLink type="button" to="/">
-          Go home
-        </StyledLink>
+        <LinksContainer>
+          <StyledLink type="button" to="/">
+            Go Home
+          </StyledLink>{" "}
+          <StyledLink to="/register">Registration</StyledLink>
+        </LinksContainer>
         <FormGroup>
-          <Label>Email address</Label>
-          <Input type="email" name="email" aria-describedby="emailHelp" />
-          <div>We'll never share your email with anyone else.</div>
+          <Input
+            type="email"
+            name="email"
+            className="form-control"
+            aria-describedby="emailHelp"
+            placeholder="Enter your email address"
+          />
         </FormGroup>
         <FormGroup>
-          <Label>Password</Label>
-          <Input name="password" type="password" />
+          <Input
+            name="password"
+            type="password"
+            className="form-control"
+            placeholder="Enter your password"
+          />
         </FormGroup>
         <Button type="submit">Login</Button>
-        <StyledLink to="/register">Registration</StyledLink>
       </Form>
     </Container>
   );

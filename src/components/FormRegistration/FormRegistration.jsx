@@ -1,70 +1,89 @@
+import { useState } from "react";
+
+import validationSchema from "./validationSchema";
 import {
   Button,
   Container,
   Form,
   FormGroup,
   Input,
-  Label,
   StyledLink,
-} from "./FormRegistration.styled";
+  LinksContainer,
+} from "./styled";
 
 const FormRegistration = ({ register }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    password: "",
+  });
 
-    const newUser = {
-      name: e.target.elements.name.value,
-      email: e.target.elements.email.value,
-      password: e.target.elements.password.value,
-    };
-    register(newUser);
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+      await register(formData);
+    } catch (error) {
+      const validationErrors = {};
+      error.inner.forEach((err) => {
+        validationErrors[err.path] = err.message;
+      });
+      setErrors(validationErrors);
+    }
   };
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <StyledLink type="button" to="/">
-          Go home
-        </StyledLink>
+        <LinksContainer>
+          <StyledLink type="button" to="/">
+            Go Home
+          </StyledLink>
+          <StyledLink to="/login">Login</StyledLink>
+        </LinksContainer>
         <FormGroup>
-          <Label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </Label>
           <Input
             type="email"
             name="email"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="e mailHelp"
+            placeholder="Enter your email address"
+            onChange={handleChange}
           />
-          <div>We'll never share your email with anyone else.</div>
         </FormGroup>
+
         <FormGroup>
-          <Label htmlFor="exampleInputName" className="form-label">
-            Name
-          </Label>
           <Input
             type="text"
             name="name"
             className="form-control"
-            id="exampleInputName"
+            placeholder="Enter your name"
+            onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup className="mb-3">
-          <Label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </Label>
+
+        <FormGroup>
           <Input
             name="password"
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            placeholder="Enter your password"
+            onChange={handleChange}
           />
         </FormGroup>
+
         <Button type="submit" className="btn btn-primary">
           Register
         </Button>
-        <StyledLink to="/login">Login</StyledLink>
       </Form>
     </Container>
   );

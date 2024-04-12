@@ -7,15 +7,21 @@ export const Container = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+export const LinksContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
 
 export const Form = styled.form`
-  max-width: 400px;
+  min-width: 260px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #e0d3d3f8;
+  background-color: black;
 `;
 
 export const FormGroup = styled.div`
@@ -29,9 +35,9 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 12px;
 `;
 
 export const Button = styled.button`
@@ -41,7 +47,7 @@ export const Button = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
 
@@ -52,13 +58,14 @@ export const Button = styled.button`
 
 export const StyledLink = styled(Link)`
   display: block;
-  margin-top: 10px;
+  min-width: 100px;
   text-align: center;
-  color: #007bff;
-  text-decoration: none;
   font-weight: bold;
-  margin-bottom: 5px;
-  y &:hover {
-    text-decoration: underline;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    color: #007bff;
   }
 `;

@@ -1,17 +1,11 @@
 import { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { currentUserThunk, logoutThunk } from "../../redux/Auth/thunks";
 import { removeToken } from "Services/api";
 
-import {
-  Div,
-  Title,
-  User,
-  UserMail,
-  Container,
-  BtnLogout,
-} from "./Layout.styled";
+import { Div, Title, User, UserMail, Container, BtnLogout } from "./styled";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();

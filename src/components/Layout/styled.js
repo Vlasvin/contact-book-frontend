@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-  border-radius: 8px;
   border: 1px solid #121214;
   box-shadow: 0 0 10px rgba(235, 227, 227, 0.1);
   padding: 20px;
   background-color: #e0d3d3f8;
-  width: 900px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 60px 20px;
+  margin-bottom: 60px;
 
   @media (max-width: 428px) {
     padding: 20px 0;
