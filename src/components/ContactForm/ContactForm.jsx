@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Notiflix from "notiflix";
+
 import { addContactAction } from "../../redux/Contacts/contactsOperations";
 
 import { nanoid } from "nanoid";
 
-import {
-  ContForm,
-  ContLabel,
-  ContInput,
-  AddButton,
-} from "./ContactForm.styled";
+import { ContForm, ContInput, AddButton } from "./styled";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (phoneNumber.length < 10) return null;
@@ -53,7 +50,11 @@ export const ContactForm = () => {
     const formattedNumber = formatPhoneNumber(number);
 
     if (!formattedNumber) {
-      alert("The phone number is too short.");
+      Notiflix.Report.failure(
+        "Warning",
+        "The phone number is too short.",
+        "OK"
+      );
       return;
     }
 
@@ -68,7 +69,11 @@ export const ContactForm = () => {
     );
 
     if (existingContact) {
-      alert(`${newContact.name} is already in contacts.`);
+      Notiflix.Report.failure(
+        "Warning",
+        `${newContact.name} is already in contacts.`,
+        "OK"
+      );
     } else {
       dispatch(addContactAction(newContact));
     }
@@ -78,27 +83,23 @@ export const ContactForm = () => {
 
   return (
     <ContForm onSubmit={handleSubmit}>
-      <ContLabel>
-        Name
-        <ContInput
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          required
-        />
-      </ContLabel>
+      <ContInput
+        type="text"
+        name="name"
+        value={name}
+        onChange={handleChange}
+        placeholder="Enter contacts name"
+        required
+      />
 
-      <ContLabel>
-        Number
-        <ContInput
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          required
-        />
-      </ContLabel>
+      <ContInput
+        type="tel"
+        name="number"
+        value={number}
+        onChange={handleChange}
+        placeholder="Enter contacts number"
+        required
+      />
 
       <AddButton type="submit">Add contact</AddButton>
     </ContForm>

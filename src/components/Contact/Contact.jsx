@@ -1,4 +1,4 @@
-import { ContItem, ContP, ContBtn } from "components/Contact/Contact.styled";
+import { ContItem, ContP, ContBtn } from "components/Contact/styled";
 
 export const Contact = ({ formattedName, contact, deleteContact }) => {
   return (

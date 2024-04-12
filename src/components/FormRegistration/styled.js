@@ -61,7 +61,7 @@ export const StyledLink = styled(Link)`
   min-width: 100px;
   text-align: center;
   font-weight: bold;
-  padding: 10px;
+  padding: 0 10px;
   color: #fff;
   text-decoration: none;
 

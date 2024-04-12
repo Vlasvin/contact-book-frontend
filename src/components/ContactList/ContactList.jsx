@@ -13,7 +13,7 @@ import {
 } from "../../redux/Selectors/selectors";
 import { Contact } from "components/Contact/Contact";
 
-import { ContList } from "components/ContactList/ContactList.styled";
+import { ContList } from "components/ContactList/styled";
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);

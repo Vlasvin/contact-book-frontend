@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import * as Notiflix from "notiflix";
 
 import { currentUserThunk, logoutThunk } from "../../redux/Auth/thunks";
 import { removeToken } from "Services/api";
@@ -27,14 +28,21 @@ const Layout = ({ children }) => {
     state.auth.user ? state.auth.user.email : null
   );
 
-  const handleClick = () => {
-    if (isAuth) {
-      dispatch(logoutThunk());
-      removeToken();
-      navigate("/login");
-    } else {
-      navigate("/login");
-    }
+  const handleLogoutConfirmation = () => {
+    Notiflix.Confirm.show(
+      "Confirmation",
+      "Are you sure you want to log out?",
+      "Yes",
+      "Cancel",
+      function () {
+        dispatch(logoutThunk());
+        removeToken();
+        navigate("/login");
+      },
+      function () {
+        Notiflix.Notify.info("You canceled log out.");
+      }
+    );
   };
 
   useEffect(() => {
@@ -54,7 +62,7 @@ const Layout = ({ children }) => {
           <User>
             <UserMail>{email}</UserMail>
             <nav>
-              <BtnLogout type="button" onClick={handleClick}>
+              <BtnLogout type="button" onClick={handleLogoutConfirmation}>
                 Log Out
               </BtnLogout>
             </nav>
@@ -62,7 +70,7 @@ const Layout = ({ children }) => {
         ) : (
           <User>
             <nav>
-              <BtnLogout type="button" onClick={handleClick}>
+              <BtnLogout type="button" onClick={handleLogoutConfirmation}>
                 Log In
               </BtnLogout>
             </nav>

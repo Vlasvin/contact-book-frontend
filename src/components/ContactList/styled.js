@@ -8,4 +8,6 @@ export const ContList = styled.ul`
   max-height: 600px;
   overflow-y: auto;
   gap: 16px;
+  max-height: 500px;
+  overflow-y: auto;
 `;

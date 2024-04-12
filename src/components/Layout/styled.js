@@ -59,7 +59,7 @@ export const BtnLogout = styled.button`
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #ffffff;
-  background-color: grey;
+  background-color: #007bff;
   display: flex;
   font-family: Phantomsans, sans-serif;
   font-size: 16px;
@@ -102,7 +102,7 @@ export const RegLink = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    color: #0056b3;
+    color: #007bff;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
   }
 `;

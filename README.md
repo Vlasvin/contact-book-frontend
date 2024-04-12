@@ -38,6 +38,7 @@ Here are the project's dependencies:
 - redux-persist: "^6.0.0"
 - styled-components: "^6.1.2"
 - web-vitals: "^2.1.3"
+- notiflix: "^3.2.7",
 
 ### Contribution and Feedback
 
