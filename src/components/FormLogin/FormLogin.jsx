@@ -1,23 +1,41 @@
+import { useState } from "react";
+
+import loginValidationSchema from "./loginSchema";
+
 import {
   Button,
   Container,
   Form,
   FormGroup,
   Input,
-  Label,
   StyledLink,
   LinksContainer,
+  ErrorText,
 } from "components/FormRegistration/styled";
 
 const FormLogin = ({ login }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [errors, setErrors] = useState({});
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-    const user = {
-      email: e.target.elements.email.value,
-      password: e.target.elements.password.value,
-    };
-    login(user);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsFormSubmitted(true);
+
+    try {
+      const formData = {
+        email: e.target.elements.email.value,
+        password: e.target.elements.password.value,
+      };
+
+      await loginValidationSchema.validate(formData, { abortEarly: false });
+      await login(formData);
+    } catch (error) {
+      const validationErrors = {};
+      error.inner.forEach((err) => {
+        validationErrors[err.path] = err.message;
+      });
+      setErrors(validationErrors);
+    }
   };
 
   return (
@@ -29,6 +47,7 @@ const FormLogin = ({ login }) => {
           </StyledLink>{" "}
           <StyledLink to="/register">Registration</StyledLink>
         </LinksContainer>
+
         <FormGroup>
           <Input
             type="email"
@@ -37,7 +56,11 @@ const FormLogin = ({ login }) => {
             aria-describedby="emailHelp"
             placeholder="Enter your email address"
           />
+          {isFormSubmitted && errors.email && (
+            <ErrorText>{errors.email}</ErrorText>
+          )}
         </FormGroup>
+
         <FormGroup>
           <Input
             name="password"
@@ -45,8 +68,11 @@ const FormLogin = ({ login }) => {
             className="form-control"
             placeholder="Enter your password"
           />
+          {isFormSubmitted && errors.password && (
+            <ErrorText>{errors.password}</ErrorText>
+          )}
         </FormGroup>
-        <Button type="submit">Login</Button>
+        <Button type="submit">Log In</Button>
       </Form>
     </Container>
   );

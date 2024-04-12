@@ -19,7 +19,7 @@ export const Form = styled.form`
   margin: 0 auto;
   padding: 40px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: black;
 `;
@@ -68,4 +68,13 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: #007bff;
   }
+`;
+
+export const ErrorText = styled.div`
+  font-size: 14px;
+  color: red;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;

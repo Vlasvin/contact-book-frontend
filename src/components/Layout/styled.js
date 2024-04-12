@@ -1,16 +1,14 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Div = styled.div`
-  border: 1px solid #121214;
-  box-shadow: 0 0 10px rgba(235, 227, 227, 0.1);
-  padding: 20px;
-  background-color: #e0d3d3f8;
+  background-color: transparent;
   width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 60px;
 
   @media (max-width: 428px) {
     padding: 20px 0;
@@ -18,6 +16,10 @@ export const Div = styled.div`
 `;
 
 export const Title = styled.h1`
+  margin: 0;
+  margin-left: 40px;
+  font-size: 52px;
+  color: white;
   @media (max-width: 768px) {
     margin-top: 0;
   }
@@ -34,6 +36,7 @@ export const BtnLogout = styled.button`
   display: flex;
   font-family: Phantomsans, sans-serif;
   font-size: 16px;
+  font-weight: bold;
   justify-content: center;
   line-height: 1em;
   max-width: 100px;
@@ -45,7 +48,7 @@ export const BtnLogout = styled.button`
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-  margin: 0 auto;
+  margin-right: 40px;
 
   &:active,
   &:hover {
@@ -53,11 +56,39 @@ export const BtnLogout = styled.button`
     background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   }
 `;
-export const Container = styled.div`
+export const MainText = styled.p`
+  color: white;
+  font-size: 52px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 428px) {
+    font-size: 20px;
+  }
+`;
+
+export const RegLink = styled(Link)`
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #0056b3;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  }
+`;
+
+export const Header = styled.div`
   display: flex;
+  padding: 30px;
   justify-content: space-between;
   width: 100%;
+  background-color: #121214;
   align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 
   @media (max-width: 428px) {
     flex-direction: column;

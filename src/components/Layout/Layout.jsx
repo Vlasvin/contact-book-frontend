@@ -5,7 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentUserThunk, logoutThunk } from "../../redux/Auth/thunks";
 import { removeToken } from "Services/api";
 
-import { Div, Title, User, UserMail, Container, BtnLogout } from "./styled";
+import {
+  Div,
+  Title,
+  User,
+  UserMail,
+  Header,
+  BtnLogout,
+  MainText,
+  RegLink,
+} from "./styled";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -31,7 +40,7 @@ const Layout = ({ children }) => {
 
   return (
     <Div>
-      <Container>
+      <Header>
         <Title>Phonebook</Title>
         {isAuth ? (
           <User>
@@ -51,8 +60,19 @@ const Layout = ({ children }) => {
             </nav>
           </User>
         )}
-      </Container>
-
+      </Header>
+      {!isAuth && (
+        <Suspense fallback={<div>Loading page...</div>}>
+          {
+            <MainText>
+              Create your own digital address book right now!{" "}
+              <RegLink to="/register">Registration</RegLink> is the first step
+              to organized management of your contacts. Start now!
+            </MainText>
+          }
+          <Outlet />
+        </Suspense>
+      )}
       {isAuth && (
         <Suspense fallback={<div>Loading page...</div>}>
           {children}

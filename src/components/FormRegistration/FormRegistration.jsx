@@ -9,16 +9,17 @@ import {
   Input,
   StyledLink,
   LinksContainer,
+  ErrorText,
 } from "./styled";
 
 const FormRegistration = ({ register }) => {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: "",
     name: "",
     password: "",
   });
-
-  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +31,8 @@ const FormRegistration = ({ register }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFormSubmitted(true);
+
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       await register(formData);
@@ -49,17 +52,8 @@ const FormRegistration = ({ register }) => {
           <StyledLink type="button" to="/">
             Go Home
           </StyledLink>
-          <StyledLink to="/login">Login</StyledLink>
+          <StyledLink to="/login">Log In</StyledLink>
         </LinksContainer>
-        <FormGroup>
-          <Input
-            type="email"
-            name="email"
-            className="form-control"
-            placeholder="Enter your email address"
-            onChange={handleChange}
-          />
-        </FormGroup>
 
         <FormGroup>
           <Input
@@ -69,6 +63,22 @@ const FormRegistration = ({ register }) => {
             placeholder="Enter your name"
             onChange={handleChange}
           />
+          {isFormSubmitted && errors.name && (
+            <ErrorText>{errors.name}</ErrorText>
+          )}
+        </FormGroup>
+
+        <FormGroup>
+          <Input
+            type="email"
+            name="email"
+            className="form-control"
+            placeholder="Enter your email address"
+            onChange={handleChange}
+          />
+          {isFormSubmitted && errors.email && (
+            <ErrorText>{errors.email}</ErrorText>
+          )}
         </FormGroup>
 
         <FormGroup>
@@ -79,6 +89,9 @@ const FormRegistration = ({ register }) => {
             placeholder="Enter your password"
             onChange={handleChange}
           />
+          {isFormSubmitted && errors.password && (
+            <ErrorText>{errors.password}</ErrorText>
+          )}
         </FormGroup>
 
         <Button type="submit" className="btn btn-primary">
