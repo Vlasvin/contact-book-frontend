@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/contacts-book-frontend/static/css/main.028441a7.css",
-    "main.js": "/contacts-book-frontend/static/js/main.7d348ee8.js",
+    "main.js": "/contacts-book-frontend/static/js/main.1f608297.js",
     "static/media/pexels-fwstudio-172289-min.jpg": "/contacts-book-frontend/static/media/pexels-fwstudio-172289-min.3094999d70208d461dce.jpg",
+    "static/media/logo.svg": "/contacts-book-frontend/static/media/logo.31a236709f6e1ffeb3e10251812380fe.svg",
     "index.html": "/contacts-book-frontend/index.html",
     "main.028441a7.css.map": "/contacts-book-frontend/static/css/main.028441a7.css.map",
-    "main.7d348ee8.js.map": "/contacts-book-frontend/static/js/main.7d348ee8.js.map"
+    "main.1f608297.js.map": "/contacts-book-frontend/static/js/main.1f608297.js.map"
   },
   "entrypoints": [
     "static/css/main.028441a7.css",
-    "static/js/main.7d348ee8.js"
+    "static/js/main.1f608297.js"
   ]
 }
