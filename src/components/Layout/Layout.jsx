@@ -7,6 +7,7 @@ import { removeToken } from "Services/api";
 
 import {
   Div,
+  TitleContainer,
   Title,
   User,
   UserMail,
@@ -14,7 +15,9 @@ import {
   BtnLogout,
   MainText,
   RegLink,
+  StyledLink,
 } from "./styled";
+import logo from "images/logo.svg";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -41,7 +44,12 @@ const Layout = ({ children }) => {
   return (
     <Div>
       <Header>
-        <Title>Phonebook</Title>
+        <TitleContainer>
+          <img src={logo} alt="Logo" width="60" height="60" />
+          <Title>
+            <StyledLink to="/">Phonebook</StyledLink>
+          </Title>
+        </TitleContainer>
         {isAuth ? (
           <User>
             <UserMail>{email}</UserMail>

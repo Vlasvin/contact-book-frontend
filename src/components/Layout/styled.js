@@ -15,14 +15,41 @@ export const Div = styled.div`
   }
 `;
 
+export const Header = styled.div`
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #121214;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+
+  @media (max-width: 428px) {
+    flex-direction: column;
+  }
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  margin-left: 40px;
+  align-items: center;
+`;
+
 export const Title = styled.h1`
   margin: 0;
-  margin-left: 40px;
+  left: 0;
   font-size: 52px;
   color: white;
   @media (max-width: 768px) {
     margin-top: 0;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;
 
 export const BtnLogout = styled.button`
@@ -57,6 +84,7 @@ export const BtnLogout = styled.button`
   }
 `;
 export const MainText = styled.p`
+  max-width: 1092px;
   color: white;
   font-size: 52px;
   font-weight: bold;
@@ -79,21 +107,6 @@ export const RegLink = styled(Link)`
   }
 `;
 
-export const Header = styled.div`
-  display: flex;
-  padding: 30px;
-  justify-content: space-between;
-  width: 100%;
-  background-color: #121214;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-
-  @media (max-width: 428px) {
-    flex-direction: column;
-  }
-`;
 export const User = styled.div`
   display: flex;
   align-items: center;

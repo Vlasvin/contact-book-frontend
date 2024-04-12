@@ -25,8 +25,6 @@ The "Contacts Book" project is built using React framework with Redux for state 
 Dependencies
 Here are the project's dependencies:
 
-- @mui/material: "^5.15.1"
-- @mui/styled-engine-sc: "^6.0.0-alpha.9"
 - @reduxjs/toolkit: "^2.0.1"
 - @testing-library/jest-dom: "^5.16.3"
 - @testing-library/react: "^12.1.4"
