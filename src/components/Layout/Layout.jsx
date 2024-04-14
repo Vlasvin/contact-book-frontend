@@ -45,6 +45,12 @@ const Layout = ({ children }) => {
     );
   };
 
+  const handleLogin = () => {
+    dispatch(logoutThunk());
+    removeToken();
+    navigate("/login");
+  };
+
   useEffect(() => {
     if (!isAuth) dispatch(currentUserThunk());
   }, [dispatch, isAuth]);
@@ -70,7 +76,7 @@ const Layout = ({ children }) => {
         ) : (
           <User>
             <nav>
-              <BtnLogout type="button" onClick={handleLogoutConfirmation}>
+              <BtnLogout type="button" onClick={handleLogin}>
                 Log In
               </BtnLogout>
             </nav>
