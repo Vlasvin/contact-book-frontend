@@ -26,8 +26,9 @@ export const Header = styled.div`
   top: 0;
   z-index: 1000;
 
-  @media (max-width: 428px) {
+  @media (max-width: 768px) {
     flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -35,6 +36,10 @@ export const TitleContainer = styled.div`
   display: flex;
   margin-left: 40px;
   align-items: center;
+
+  @media (max-width: 428px) {
+    margin: 0;
+  }
 `;
 
 export const Title = styled.h1`
@@ -42,8 +47,13 @@ export const Title = styled.h1`
   left: 0;
   font-size: 52px;
   color: white;
+
   @media (max-width: 768px) {
     margin-top: 0;
+  }
+
+  @media (max-width: 428px) {
+    font-size: 42px;
   }
 `;
 
@@ -81,6 +91,11 @@ export const BtnLogout = styled.button`
   &:hover {
     outline: 0;
     background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
   }
 `;
 export const MainText = styled.p`
@@ -93,6 +108,7 @@ export const MainText = styled.p`
 
   @media (max-width: 428px) {
     font-size: 20px;
+    padding: 20px;
   }
 `;
 
